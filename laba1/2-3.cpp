@@ -2,7 +2,13 @@
 using namespace std;
 
 bool is35 (int x) {
-
+    if (x  % 3 == 0 || x % 5 ==0) {
+        if (x % 3 == 0 and x % 5 == 0) {
+            return false;
+        }
+        return true;
+    }
+    return false;
 }
 
 int main() {
