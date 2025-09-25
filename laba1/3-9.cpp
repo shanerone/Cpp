@@ -16,7 +16,10 @@ void rightTriangle(int x) {
 int main() {
     int x;
     cout << "Enter num: ";
-    cin >> x;
+    if (!(cin >> x)) {
+        cout << "incorrect" << endl;
+        return 1;
+    }
     rightTriangle(x);
     return 0;
 }

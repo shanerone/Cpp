@@ -13,6 +13,9 @@ int numLen (long x) {
 int main() {
     long x;
     cout << "Enter num: ";
-    cin >> x;
+    if (!(cin >> x)) {
+        cout << "incorrect" << endl;
+        return 1;
+    }
     cout << numLen(x) << endl;
 }
