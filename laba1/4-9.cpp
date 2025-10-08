@@ -22,7 +22,7 @@ int main() {
     int size, x;
     cout << "Enter size: ";
     if (!(cin >> size)) {
-        cerr << "incorrect" << endl;
+        cout << "incorrect" << endl;
         return 1;
     }
     cout << "Enter x: ";
