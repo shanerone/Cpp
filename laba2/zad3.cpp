@@ -5,7 +5,7 @@ int main() {
     std::vector<int> V;
     int size;
     std::cout << "enter size: ";
-    if (!(std::cin >> size)) {
+    if (!(std::cin >> size) or (size % 2 == 0) or (size < 5)) {
         std::cout << "incorrect" << std::endl;
         return 1;
     }
