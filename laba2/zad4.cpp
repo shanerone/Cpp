@@ -9,11 +9,22 @@ int main() {
     int N;
 
     cout << "input A: ";
-    cin >> A;
+    if (!(cin >> A)) {
+        cout << "incorrect input" << endl;
+        return 1;
+    }
+    
     cout << "input D: ";
-    cin >> D;
+    if (!(cin >> D)) {
+        cout << "incorrect input" << endl;
+        return 1;
+    }
+    
     cout << "input N: ";
-    cin >> N;
+    if (!(cin >> N) || N <= 0) {
+        cout << "incorrect input (N must be positive)" << endl;
+        return 1;
+    }
 
     vector<double> progression(N);
 
