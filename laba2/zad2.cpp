@@ -1,23 +1,29 @@
 #include <iostream>
-#include <deque>
 #include <vector>
+#include <deque>
+
 using namespace std;
 
-
 int main() {
-    std::vector<int> V = {1, 2, 3, 4};
-    std::deque<int> D = {4, 5, 6, 7};
+    vector<int> V = {1, 2, 3, 4};
+    deque<int> D = {5, 6, 7, 8};
 
-    std::cout << "Vector: ";
-    for (int i : V) {
-        std::cout << i << " ";
-    }
-    std::cout << std::endl;
+    // Добавляем в конец V первую половину D
+    int halfD = D.size() / 2;
+    V.insert(V.end(), D.begin(), D.begin() + halfD);
 
-    std::cout << "Deque: ";
-    for (int i : D) {
-        std::cout << i << " ";
-    }
-    std::cout << std::endl;
+    // Добавляем в начало D вторую половину V, но в обратном порядке
+    int halfV = V.size() / 2;
+    vector<int> tmp(V.begin() + halfV, V.end());
+    reverse(tmp.begin(), tmp.end());
+    D.insert(D.begin(), tmp.begin(), tmp.end());
 
+    // Выводим результат
+    cout << "V: ";
+    for (int x : V) cout << x << " ";
+    cout << endl;
+    cout << "D: ";
+    for (int x : D) cout << x << " ";
+    cout << endl;
+    return 0;
 }
