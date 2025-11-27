@@ -89,9 +89,15 @@ int main() {
     
     short int h, m;
     cout << "Введите часы (0-23): ";
-    cin >> h;
+    if (!(cin >> h)){
+        cout << "Invalid hours\n";
+        return 1;
+    }
     cout << "Введите минуты (0-59): ";
-    cin >> m;
+    if (!(cin >> m)){
+        cout << "Invalid minutes\n";
+        return 1;
+    }
     
     Time userTime(h, m);
     cout << "Ваше время: " << userTime.toString() << "\n";

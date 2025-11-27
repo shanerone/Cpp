@@ -21,5 +21,6 @@ public:
 
     string toString() const;
     
+    ostream& operator<<(std::ostream& os, const Time& time);
     Time subtractTime(const Time& other) const;
 };
