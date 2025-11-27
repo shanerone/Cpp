@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-class Time{
+class Time {
 private:
     short int hours_;
     short int minutes_;
@@ -19,7 +19,19 @@ public:
     void setHours(short int h);
     void setMinutes(short int m);
 
-    string toString() const;
-    
     Time subtractTime(const Time& other) const;
+
+    string toString() const;
+
+    Time& operator++();           
+    Time operator++(int);         
+    Time& operator--();           
+    Time operator--(int);         
+
+    
+    operator int() const;         
+    operator bool() const; 
+       
+    bool operator<(const Time& t) const;
+    bool operator>(const Time& t) const;
 };
