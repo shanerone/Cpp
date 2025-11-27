@@ -68,7 +68,7 @@ string Time::toString() const {
     return result;
 }
 
-ostream& operator<<(std::ostream& os, const Time& time) {
-    os << "(" << time.getHours() << ", " << time.getMinutes() << ")";
+ostream& operator<<(ostream& os, const Time& time) {
+    os << time.toString(); 
     return os;
 }

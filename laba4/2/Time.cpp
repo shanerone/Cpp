@@ -41,30 +41,30 @@ void Time::setMinutes(short int m) {
 Time Time::subtractTime(const Time& other) const {
     int totalMinutes1 = hours_ * 60 + minutes_;
     int totalMinutes2 = other.hours_ * 60 + other.minutes_;
-    
+
     int result = totalMinutes1 - totalMinutes2;
-    
+
     if (result < 0) {
         result += 24 * 60;
     }
-    
+
     short int resHours = result / 60;
     short int resMinutes = result % 60;
-    
+
     return Time(resHours, resMinutes);
 }
 
 string Time::toString() const {
     string result = "";
-    
+
     if (hours_ < 10) result += "0";
     result += to_string(hours_);
-    
+
     result += ":";
-    
+
     if (minutes_ < 10) result += "0";
     result += to_string(minutes_);
-    
+
     return result;
 }
 
@@ -122,4 +122,9 @@ bool Time::operator>(const Time& t) const {
     int minutes1 = hours_ * 60 + minutes_;
     int minutes2 = t.hours_ * 60 + t.minutes_;
     return minutes1 > minutes2;
+}
+
+ostream& operator<<(ostream& os, const Time& time) {
+    os << time.toString();
+    return os;
 }

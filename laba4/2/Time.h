@@ -34,4 +34,6 @@ public:
        
     bool operator<(const Time& t) const;
     bool operator>(const Time& t) const;
+    
+    friend ostream& operator<<(ostream& os, const Time& time);
 };
