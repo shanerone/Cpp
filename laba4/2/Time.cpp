@@ -24,7 +24,7 @@ void Time::setHours(short int h) {
     if (h >= 0 && h <= 23) {
         hours_ = h;
     } else {
-        cout << "Ошибка! Часы должны быть от 0 до 23\n";
+        cout << "INvalid hours\n";
         hours_ = 0;
     }
 }
@@ -33,7 +33,7 @@ void Time::setMinutes(short int m) {
     if (m >= 0 && m <= 59) {
         minutes_ = m;
     } else {
-        cout << "Ошибка! Минуты должны быть от 0 до 59\n";
+        cout << "Invalid minutes\n";
         minutes_ = 0;
     }
 }
@@ -68,7 +68,6 @@ string Time::toString() const {
     return result;
 }
 
-// Унарные операции - префиксный ++
 Time& Time::operator++() {
     minutes_++;
     if (minutes_ >= 60) {
@@ -81,14 +80,12 @@ Time& Time::operator++() {
     return *this;
 }
 
-// Унарные операции - постфиксный ++
 Time Time::operator++(int) {
     Time temp = *this;
     ++(*this);
     return temp;
 }
 
-// Унарные операции - префиксный --
 Time& Time::operator--() {
     minutes_--;
     if (minutes_ < 0) {
@@ -101,14 +98,12 @@ Time& Time::operator--() {
     return *this;
 }
 
-// Унарные операции - постфиксный --
 Time Time::operator--(int) {
     Time temp = *this;
     --(*this);
     return temp;
 }
 
-// Приведение типа к int (количество минут)
 Time::operator int() const {
     return hours_ * 60 + minutes_;
 }
