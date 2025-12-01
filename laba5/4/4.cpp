@@ -34,7 +34,7 @@ int main() {
     ofstream out("zad4.txt");
     if (out.is_open()) {
         for (int i = 0; i < 25; i++) {
-            out << GenRandNum() << " ";
+            out << GenRandNum() << endl;
         }
     }
     out.close();
