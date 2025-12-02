@@ -39,6 +39,6 @@ int main() {
         }
     }
     out.close();
-    cout << "Amount:" << CountEven("zad5.txt") << endl;
+    cout << "Amount: " << CountEven("zad5.txt") << endl;
     return 0;
 }
