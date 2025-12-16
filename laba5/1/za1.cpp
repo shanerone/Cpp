@@ -53,7 +53,7 @@ void find_raznost(const string& filename) {
 }
 
 int main() {
-    string filename = "data.bin";
+    string filename = "za1.bin";
     int elementsCount;
 
     cout << "Enter number of el: ";
