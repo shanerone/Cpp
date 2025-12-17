@@ -31,7 +31,6 @@ void fillFileWithToys(const string& filename) {
     }
     
     file.close();
-    cout << "Файл заполнен " << count << " игрушками\n";
 }
 
 void findExpensiveToys(const string& filename, int k) {
@@ -49,7 +48,7 @@ void findExpensiveToys(const string& filename, int k) {
     file.close();
     
     if (count == 0) {
-        cout << "Файл пуст!\n";
+        cout << "Файл пуст";
         return;
     }
     
@@ -58,17 +57,15 @@ void findExpensiveToys(const string& filename, int k) {
         maxPrice = max(maxPrice, toys[i].price);
     }
     
-    cout << "\nМаксимальная цена: " << maxPrice << " руб.\n";
+    cout << "\nMax price: " << maxPrice << " руб.\n";
     cout << "Допустимое отклонение: " << k << " руб.\n";
-    cout << "\nДорогие игрушки:\n";
-    cout << "═══════════════════════════════════════════════════\n";
+    cout << "\nMax price toys:\n";
     
     for (int i = 0; i < count; i++) {
         if (toys[i].price >= maxPrice - k) {
-            cout << "Название: " << toys[i].name << "\n";
-            cout << "Цена: " << toys[i].price << " руб.\n";
-            cout << "Возраст: " << toys[i].minAge << "-" << toys[i].maxAge << " лет\n";
-            cout << "───────────────────────────────────────────────────\n";
+            cout << "Name: " << toys[i].name << "\n";
+            cout << "Price: " << toys[i].price << " rub.\n";
+            cout << "Age: " << toys[i].minAge << "-" << toys[i].maxAge << " years\n";
         }
     }
 }
