@@ -8,7 +8,7 @@ int FindMaxandCount(const string& filename, int& count) {
     ifstream in(filename);
     if (!in.is_open()) {
         cout << "File dont open" << endl;
-        return 1;  // можно вернуть 1 как ошибку
+        return 1;  
     }
 
     int maxVal = 0;

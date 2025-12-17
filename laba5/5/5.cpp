@@ -8,7 +8,7 @@ int CountEven(const string& filename) {
     ifstream in(filename);
     if (!in.is_open()) {
         cout << "File dont open" << endl;
-        return 1;  // можно считать кодом ошибки
+        return 1;  
     }
 
     int count = 0;

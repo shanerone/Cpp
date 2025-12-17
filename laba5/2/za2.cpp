@@ -28,7 +28,6 @@ void matrixFromFile(const string& filename, int n) {
     int count = 0;
     int number;
 
-    // читаем все числа в массив numbers
     while (file.read((char*)&number, sizeof(int)) && count < 1000) {
         numbers[count] = number;
         count++;
@@ -36,11 +35,9 @@ void matrixFromFile(const string& filename, int n) {
 
     file.close();
 
-    // матрица n×n, инициализирована нулями
     int matrix[100][100] = {0};
 
     int index = 0;
-    // заполняем матрицу числами из файла, остальное нулями
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (index < count) {
@@ -51,7 +48,6 @@ void matrixFromFile(const string& filename, int n) {
         }
     }
 
-    // находим максимальный элемент матрицы
     int maxVal = matrix[0][0];
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -61,7 +57,6 @@ void matrixFromFile(const string& filename, int n) {
 
     cout << "\nMax element: " << maxVal << "\n";
 
-    // заменяем все вхождения максимума на 0
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (matrix[i][j] == maxVal) {
@@ -70,7 +65,6 @@ void matrixFromFile(const string& filename, int n) {
         }
     }
 
-    // выводим матрицу
     cout << "\nMatrix " << n << "x" << n << ":\n";
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
