@@ -1,23 +1,75 @@
 #include "za1.h"
-#include <iostream>
-using namespace std;
 
-UniqueList::UniqueList() {
+template <typename T>
+bool HashSet<T>::FindElement(const T& element) const
+{
+    for (int i = 0; i < size; i++)
+    {
+        if (data[i] == element)
+            return true;
+    }
+    return false;
+}
+
+template <typename T>
+HashSet<T>::HashSet()
+{
+    data = new T[CAPACITY];
     size = 0;
 }
 
-void UniqueList::Add(string item) {
-    if (!Contains(item)) {
-        items[size] = item;
-        size++;
+template <typename T>
+HashSet<T>::HashSet(const HashSet& other)
+{
+    data = new T[CAPACITY];
+    size = other.size;
+    for (int i = 0; i < size; i++)
+    {
+        data[i] = other.data[i];
     }
 }
 
-void UniqueList::Remove(string item) {
-    for (int i = 0; i < size; i++) {
-        if (items[i] == item) {
-            for (int j = i; j < size - 1; j++) {
-                items[j] = items[j + 1];
+template <typename T>
+HashSet<T>& HashSet<T>::operator=(const HashSet& other)
+{
+    if (this != &other)
+    {
+        delete[] data;
+        data = new T[CAPACITY];
+        size = other.size;
+        for (int i = 0; i < size; i++)
+        {
+            data[i] = other.data[i];
+        }
+    }
+    return *this;
+}
+
+template <typename T>
+HashSet<T>::~HashSet()
+{
+    delete[] data;
+}
+
+template <typename T>
+void HashSet<T>::Add(const T& element)
+{
+    if (!FindElement(element) && size < CAPACITY)
+    {
+        data[size++] = element;
+    }
+}
+
+template <typename T>
+void HashSet<T>::Remove(const T& element)
+{
+    for (int i = 0; i < size; i++)
+    {
+        if (data[i] == element)
+        {
+            for (int j = i; j < size - 1; j++)
+            {
+                data[j] = data[j + 1];
             }
             size--;
             return;
@@ -25,63 +77,73 @@ void UniqueList::Remove(string item) {
     }
 }
 
-bool UniqueList::Contains(string item) {
-    for (int i = 0; i < size; i++) {
-        if (items[i] == item) {
-            return true;
-        }
-    }
-    return false;
+template <typename T>
+bool HashSet<T>::Contains(const T& element) const
+{
+    return FindElement(element);
 }
 
-UniqueList UniqueList::Union(UniqueList other) {
-    UniqueList result = *this;
-    
-    for (int i = 0; i < other.size; i++) {
-        result.Add(other.items[i]);
+template <typename T>
+HashSet<T> HashSet<T>::Union(const HashSet& other) const
+{
+    HashSet result;
+    for (int i = 0; i < size; i++)
+    {
+        result.Add(data[i]);
     }
-    
+    for (int i = 0; i < other.size; i++)
+    {
+        result.Add(other.data[i]);
+    }
     return result;
 }
 
-UniqueList UniqueList::Except(UniqueList other) {
-    UniqueList result;
-    
-    for (int i = 0; i < size; i++) {
-        if (!other.Contains(items[i])) {
-            result.Add(items[i]);
+template <typename T>
+HashSet<T> HashSet<T>::Except(const HashSet& other) const
+{
+    HashSet result;
+    for (int i = 0; i < size; i++)
+    {
+        if (!other.Contains(data[i]))
+        {
+            result.Add(data[i]);
         }
     }
-    
     return result;
 }
 
-UniqueList UniqueList::Intersect(UniqueList other) {
-    UniqueList result;
-    
-    for (int i = 0; i < size; i++) {
-        if (other.Contains(items[i])) {
-            result.Add(items[i]);
+template <typename T>
+HashSet<T> HashSet<T>::Intersect(const HashSet& other) const
+{
+    HashSet result;
+    for (int i = 0; i < size; i++)
+    {
+        if (other.Contains(data[i]))
+        {
+            result.Add(data[i]);
         }
     }
-    
     return result;
 }
 
-int UniqueList::GetSize() {
+template <typename T>
+int HashSet<T>::GetSize() const
+{
     return size;
 }
 
-string UniqueList::Get(int index) {
-    if (index >= 0 && index < size) {
-        return items[index];
+template <typename T>
+void HashSet<T>::Print() const
+{
+    for (int i = 0; i < size; i++)
+    {
+        std::cout << data[i] << " ";
     }
-    return "";
+    std::cout << std::endl;
 }
 
-void UniqueList::Print() {
-    for (int i = 0; i < size; i++) {
-        cout << items[i];
-        if (i < size - 1) cout << ", ";
-    }
+template <typename T>
+T HashSet<T>::Get(int index) const
+{
+    return data[index];
 }
