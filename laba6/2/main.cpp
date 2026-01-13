@@ -2,7 +2,7 @@
 #include <string>
 #include "za2.cpp"
 
-using namespace std;
+
 
 struct PriceData
 {
@@ -12,6 +12,7 @@ struct PriceData
 
 int main()
 {
+    using namespace std;    
     setlocale(LC_ALL, "ru_RU.UTF-8");
 
     Dictionary<int, PriceData> prices;
